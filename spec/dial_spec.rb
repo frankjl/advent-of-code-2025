@@ -46,19 +46,25 @@ RSpec.describe Dial do
 
     context "when given the sample input" do
       it "produces the correct password" do
-        lines = %w[L68
-          L30
-          R48
-          L5
-          R60
-          L55
-          L1
-          L99
-          R14
-          L82]
-        lines.each do |line|
-          dial.spin(line)
-        end
+        dial.spin("L68") # to 82
+        expect(dial.password).to eq(1)
+        dial.spin("L30") # to 52
+        expect(dial.password).to eq(1)
+        dial.spin("R48") # to 0
+        expect(dial.password).to eq(2)
+        dial.spin("L5")  # to 95
+        expect(dial.password).to eq(2)
+        dial.spin("R60") # to 55
+        expect(dial.password).to eq(3)
+        dial.spin("L55") # to 0
+        expect(dial.password).to eq(4)
+        dial.spin("L1")  # to 99
+        expect(dial.password).to eq(4)
+        dial.spin("L99") # to 0
+        expect(dial.password).to eq(5)
+        dial.spin("R14") # to 14
+        expect(dial.password).to eq(5)
+        dial.spin("L82") # to 32
         expect(dial.password).to eq(6)
       end
     end
