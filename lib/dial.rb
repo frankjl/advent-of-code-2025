@@ -15,11 +15,11 @@ class Dial
 
     case direction
     when "L"
-      if @counter == 0
+      if counter == 0
         @counter = clicks - steps
       else
         @counter -= steps
-        while @counter < 0
+        while counter < 0
           @counter += clicks
           @password += 1
         end
