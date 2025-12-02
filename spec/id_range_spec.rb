@@ -1,4 +1,5 @@
 require_relative "../lib/id_range"
+require "spec_helper"
 
 describe IdRange do
   describe "#count_invalid" do
@@ -26,7 +27,7 @@ describe IdRange do
   describe ".parse" do
     it "parses multiple ranges and counts invalid IDs" do
       input = "11-22,95-115,998-1012"
-      expect(IdRange.parse(input)).to eq(2252) # 2 + 1 + 1 = 4 invalid IDs
+      expect(IdRange.parse(input)).to eq(2252)
     end
   end
 end

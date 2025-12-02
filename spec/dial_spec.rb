@@ -1,4 +1,5 @@
 require_relative "../lib/dial"
+require "spec_helper"
 
 RSpec.describe Dial do
   let(:dial) { Dial.new }

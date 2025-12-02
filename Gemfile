@@ -4,4 +4,4 @@ source "https://rubygems.org"
 
 gem "standardrb"
 gem "rspec"
-# gem "rails"
+gem "simplecov"
