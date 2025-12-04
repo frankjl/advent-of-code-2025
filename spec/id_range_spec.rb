@@ -23,11 +23,4 @@ describe IdRange do
       expect(id_range.find_invalid.size).to eq(1)
     end
   end
-
-  describe ".parse" do
-    it "parses multiple ranges and counts invalid IDs" do
-      input = "11-22,95-115,998-1012"
-      expect(IdRange.parse(input)).to eq(2252)
-    end
-  end
 end

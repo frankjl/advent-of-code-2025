@@ -14,11 +14,4 @@ class IdRange
   def is_invalid?(id)
     /^(\d+)(\1)+$/ =~ id.to_s
   end
-
-  def self.parse(input)
-    input.strip.split(",").sum do |range|
-      (start, stop) = range.split("-").map(&:to_i)
-      IdRange.new(start, stop).find_invalid.sum
-    end
-  end
 end
