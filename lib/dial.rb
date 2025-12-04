@@ -20,7 +20,7 @@ class Dial
     @password += 1 if @counter % clicks == 0
   end
 
-  def counter
+  def current
     (@counter < 0) ? (clicks - @counter.abs) % clicks : @counter % clicks
   end
 

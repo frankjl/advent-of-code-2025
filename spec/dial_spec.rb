@@ -6,7 +6,7 @@ RSpec.describe Dial do
 
   describe "#initialize" do
     it "sets the counter to the starting point" do
-      expect(dial.instance_variable_get(:@counter)).to eq(50)
+      expect(dial.current).to eq(50)
     end
   end
 
@@ -14,25 +14,25 @@ RSpec.describe Dial do
     context "when spinning left within bounds" do
       it "decreases the counter correctly" do
         dial.spin("L20")
-        expect(dial.counter).to eq(30)
+        expect(dial.current).to eq(30)
       end
     end
     context "when spinning left beyond zero" do
       it "wraps around correctly" do
         dial.spin("L60")
-        expect(dial.counter).to eq(90)
+        expect(dial.current).to eq(90)
       end
     end
     context "when spinning right within bounds" do
       it "increases the counter correctly" do
         dial.spin("R30")
-        expect(dial.counter).to eq(80)
+        expect(dial.current).to eq(80)
       end
     end
     context "when spinning right beyond maximum" do
       it "wraps around correctly" do
         dial.spin("R60")
-        expect(dial.counter).to eq(10)
+        expect(dial.current).to eq(10)
       end
     end
 

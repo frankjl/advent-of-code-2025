@@ -1,4 +1,5 @@
 require_relative "../lib/battery_bank"
+require "spec_helper"
 
 describe(BatteryBank) do
   describe "#find_largest_joltage" do

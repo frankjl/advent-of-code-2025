@@ -1,4 +1,5 @@
 require_relative "../lib/grid"
+require "spec_helper"
 
 describe Grid do
   describe "#is_accessible?" do
