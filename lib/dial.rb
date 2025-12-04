@@ -1,5 +1,5 @@
 class Dial
-  attr_reader :counter, :password
+  attr_reader :password
 
   def initialize
     @counter = starting_point
@@ -10,30 +10,18 @@ class Dial
     direction = code[0]
     steps = code[1..].to_i
 
-    @password += (steps / clicks).floor
-    steps %= clicks
-
-    case direction
-    when "L"
-      if counter == 0
-        @counter = clicks - steps
-      else
-        @counter -= steps
-        while counter < 0
-          @counter += clicks
-          @password += 1
-        end
-        @password += 1 if @counter == 0
-      end
-    when "R"
-      @counter += steps
-      while @counter >= clicks
-        @counter -= clicks
-        @password += 1
-      end
-    else
-      raise "Invalid direction"
+    steps.times do
+      click((direction == "L") ? -1 : 1)
     end
+  end
+
+  def click(step)
+    @counter += step
+    @password += 1 if @counter % clicks == 0
+  end
+
+  def counter
+    (@counter < 0) ? (clicks - @counter.abs) % clicks : @counter % clicks
   end
 
   def starting_point

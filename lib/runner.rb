@@ -2,7 +2,7 @@ require_relative "dial"
 dial = Dial.new
 
 File.readlines("inputs/day01.txt").each do |line|
-  puts "Spinning #{line.strip} #{dial.counter} -> #{dial.password}"
+  # puts "Spinning #{line.strip} #{dial.counter} -> #{dial.password}"
   dial.spin(line.strip)
 end
 
@@ -18,7 +18,7 @@ require_relative "battery_bank"
 sum = File.readlines("inputs/day03.txt").sum do |line|
   bank = BatteryBank.new(line.strip.chars.map(&:to_i))
   largest = bank.find_largest_joltage(12)
-  puts "Largest joltage battery in #{line.strip} is #{largest}"
+  # puts "Largest joltage battery in #{line.strip} is #{largest}"
   largest
 end
 
