@@ -25,11 +25,9 @@ class Inventory
   end
 
   def find_largest_possible_range(range)
-    matching_ranges = (find_matching_ranges(range.first) + find_matching_ranges(range.last)).sort.uniq
-
     result = [
-      matching_ranges.map { |range| range.first }.min,
-      matching_ranges.map { |range| range.last }.max
+      find_matching_ranges(range.first).map { |range| range.first }.min,
+      find_matching_ranges(range.last).map { |range| range.last }.max
     ]
 
     (result == range) ? result : find_largest_possible_range(result)

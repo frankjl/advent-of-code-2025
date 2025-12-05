@@ -10,7 +10,7 @@ describe(BatteryBank) do
 
     it "finds the largest joltage battery with n=3" do
       bank = BatteryBank.new("811111111111119".chars.map(&:to_i))
-      expect(bank.find_largest_joltage(2)).to eq(89)
+      expect(bank.find_largest_joltage(3)).to eq(819)
     end
 
     it "finds the largest joltage battery with n=2" do
