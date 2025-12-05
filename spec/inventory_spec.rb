@@ -14,4 +14,11 @@ describe Inventory do
       expect(inventory.is_fresh?(45)).to be false
     end
   end
+
+  describe "#find_largest_possible_range" do
+    it "should find all possible fresh ids" do
+      inventory = Inventory.new(["10-20", "30-40"])
+      expect(inventory.all_fresh_ingredients).to eq 22
+    end
+  end
 end
