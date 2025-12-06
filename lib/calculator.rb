@@ -5,16 +5,15 @@ class Calculator
   end
 
   def value
-
     index = -1
-    
+
     @operators.map do |operator|
-      numbers = operator.chars.map do 
+      numbers = operator.chars.map do
         index += 1
         cephalod_number(index)
-      end.find_all do |x| x > 0 end
+      end.find_all { |x| x > 0 }
 
-      operator.strip == "+" ? numbers.sum : numbers.reduce(1) { |sum, num| sum * num }
+      (operator.strip == "+") ? numbers.sum : numbers.reduce(1) { |sum, num| sum * num }
     end
   end
 

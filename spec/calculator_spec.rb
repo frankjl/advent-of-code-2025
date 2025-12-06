@@ -11,7 +11,7 @@ RSpec.describe Calculator do
         *   +   *   +  
       GRID
       calculator = Calculator.new(s)
-      
+
       expect(calculator.value.sum).to eq(3263827)
     end
   end
