@@ -11,7 +11,7 @@ class Grid
     4
   end
 
-  def is_toilet_paper?(y, x)
+  def is_toilet_paper?(x, y)
     (0..rows - 1).cover?(y) && (0..cols - 1).cover?(x) && @grid[y][x].strip == "@"
   end
 
@@ -25,10 +25,10 @@ class Grid
 
     count = adjacent.count do |coordinate|
       (x, y) = coordinate
-      is_toilet_paper?(y, x)
+      is_toilet_paper?(x, y)
     end
 
-    is_toilet_paper?(row, col) && count < accessible_threshold
+    is_toilet_paper?(col, row) && count < accessible_threshold
   end
 
   def mark_accessible(x, y)
