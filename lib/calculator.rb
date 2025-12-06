@@ -1,30 +1,21 @@
 class Calculator
   def initialize(lines)
-    @operators = lines.split("\n").last
+    @operators = lines.split("\n").last.scan(/[\+\*]\s+/)
     @operands = lines.split("\n")[0..-2]
   end
 
   def value
-    numbers = []
-    result = []
 
-    @operators.reverse.chars.each_with_index.map do |operator, index|
-      number = cephalod_number(@operators.size - 1 - index)
+    index = -1
+    
+    @operators.map do |operator|
+      numbers = operator.chars.map do 
+        index += 1
+        cephalod_number(index)
+      end.find_all do |x| x > 0 end
 
-      numbers << number if number > 0
-
-      if operator == "+"
-        # Calculate the sum of all of the cephalod numbers
-        result << numbers.sum
-        numbers.clear
-      elsif operator == "*"
-        # Calculate the product of the cephalod numbers
-        result << numbers.reduce(1) { |sum, num| sum * num }
-        numbers.clear
-      end
+      operator.strip == "+" ? numbers.sum : numbers.reduce(1) { |sum, num| sum * num }
     end
-
-    result
   end
 
   def cephalod_number(index)
