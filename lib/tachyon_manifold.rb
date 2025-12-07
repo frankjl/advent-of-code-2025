@@ -4,14 +4,14 @@ class TachyonManifold
   end
 
   def count_splits
-    start_tachyon_beam.number_of_splits
+    execute_tachyon_beam.number_of_splits
   end
 
   def count_all_possible_timelines
-    start_tachyon_beam.timelines
+    execute_tachyon_beam.timelines
   end
 
-  def start_tachyon_beam
+  def execute_tachyon_beam
     index = @lines.first.index("S")
     counter = IndexCounter.new
     counter.increment(index)
