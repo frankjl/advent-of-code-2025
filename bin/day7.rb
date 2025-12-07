@@ -5,4 +5,6 @@ input = File.read("inputs/day07.txt")
 
 manifold = TachyonManifold.new(input)
 
-puts "Value is: #{manifold.split_count}"
+puts "Split count is: #{manifold.count_splits}"
+
+puts "Timeline count is: #{manifold.count_all_possible_timelines}"

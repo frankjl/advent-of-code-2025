@@ -3,12 +3,16 @@ class TachyonManifold
     @lines = input.split("\n").map(&:strip)
   end
 
-  def split_count
-    index = @lines.first.index("S")
-    count_splits(index)
+  def count_splits
+    start_tachyon_beam.number_of_splits
   end
 
-  def count_splits(index)
+  def count_all_possible_timelines
+    start_tachyon_beam.timelines
+  end
+
+  def start_tachyon_beam
+    index = @lines.first.index("S")
     counter = IndexCounter.new
     counter.increment(index)
 
@@ -18,15 +22,15 @@ class TachyonManifold
         counter.split(index) if char == "^"
       end
     end
-
-    counter.paths
+    counter
   end
 
   class IndexCounter
-    attr_reader :counter
+    attr_reader :counter, :number_of_splits
 
     def initialize
       @counter = Hash.new(0)
+      @number_of_splits = 0
     end
 
     def increment(index)
@@ -34,6 +38,7 @@ class TachyonManifold
     end
 
     def split(index)
+      @number_of_splits += 1
       count = @counter[index]
       @counter.delete(index)
       @counter[index - 1] += count
@@ -44,7 +49,7 @@ class TachyonManifold
       @counter.keys
     end
 
-    def paths
+    def timelines
       @counter.values.sum
     end
   end
