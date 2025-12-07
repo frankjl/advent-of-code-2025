@@ -1,6 +1,6 @@
 class Calculator
   def initialize(lines)
-    @operators = lines.split("\n").last.scan(/[\+\*]\s+/)
+    @operators = lines.split("\n").last.scan(/[+*]\s+/)
     @operands = lines.split("\n")[0..-2]
   end
 
